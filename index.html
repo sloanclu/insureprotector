@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Insurance Risk Assessment | Gregory M Sloan</title>
+    <meta name="description" content="Understand your life insurance approval odds with our quick risk assessment quiz.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            border-bottom: 1px solid #e9ecef;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a252f;
+        }
+
+        .phone-header {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .phone-header a {
+            color: #2c3e50;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a252f;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: #5a6c7d;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #5a6c7d;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero .subtitle {
+                font-size: 16px;
+            }
+        }
+
+        /* Profile Section */
+        .profile-section {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+
+        .profile-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a252f;
+            margin-bottom: 15px;
+            white-space: nowrap;
+        }
+
+        .profile-credentials {
+            font-size: 14px;
+            color: #7f8c8d;
+            font-weight: 500;
+            display: inline;
+        }
+
+        .profile-blurb {
+            font-size: 15px;
+            color: #5a6c7d;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            padding: 40px 20px;
+            background: white;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quiz-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a252f;
+            margin-bottom: 15px;
+        }
+
+        .quiz-header p {
+            font-size: 16px;
+            color: #5a6c7d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .conditions-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .conditions-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .conditions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .condition-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .condition-card:hover {
+            border-color: #2c3e50;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .condition-card.selected {
+            border-color: #2c3e50;
+            background: #e9ecef;
+        }
+
+        .condition-icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .condition-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a252f;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            color: #5a6c7d;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Results Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 40px;
+            border-left: 6px solid #e67e22;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-icon {
+            font-size: 32px;
+            margin-right: 15px;
+            color: #e67e22;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #8b5a00;
+            margin: 0;
+        }
+
+        .modal-message {
+            font-size: 16px;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .modal-button {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .modal-button:hover {
+            text-decoration: none;
+        }
+
+        .modal-button:active {
+            text-decoration: none;
+        }
+
+        .modal-button-call {
+            background: #e67e22;
+            color: white !important;
+        }
+
+        .modal-button-call:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(230, 126, 34, 0.3);
+            color: white !important;
+        }
+
+        .modal-button-call:visited {
+            color: white !important;
+        }
+
+        .modal-button-book {
+            background: #27ae60;
+            color: white !important;
+        }
+
+        .modal-button-book:hover {
+            background: #229954;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(39, 174, 96, 0.3);
+            color: white !important;
+        }
+
+        .modal-button-book:visited {
+            color: white !important;
+        }
+
+        /* Perfect Health Modal */
+        .modal-content.perfect-health {
+            border-left-color: #27ae60;
+            background: linear-gradient(135deg, #f0fdf4 0%, #fff 100%);
+        }
+
+        .modal-content.perfect-health .modal-icon {
+            color: #27ae60;
+            font-size: 40px;
+        }
+
+        .modal-content.perfect-health .modal-title {
+            color: #1e7e34;
+        }
+
+        .modal-content.perfect-health .modal-message {
+            color: #2d5a3d;
+        }
+
+        /* Audit Result Modal */
+        .modal-content.audit-result {
+            border-left-color: #e67e22;
+            background: linear-gradient(135deg, #fffbf0 0%, #fff 100%);
+        }
+
+        .modal-content.audit-result .modal-icon {
+            color: #e67e22;
+        }
+
+        .modal-content.audit-result .modal-title {
+            color: #8b5a00;
+        }
+
+        .modal-content.audit-result .modal-message {
+            color: #5a6c7d;
+        }
+
+        .modal-footer {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .modal-content {
+                margin: 20% auto;
+                padding: 30px 20px;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+
+            .modal-button {
+                min-width: auto;
+            }
+
+            .modal-content.perfect-health .modal-icon {
+                font-size: 32px;
+            }
+        }
+
+        .cta-phone {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .confidence-text {
+            font-size: 13px;
+            color: #95a5a6;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            white-space: nowrap;
+        }
+
+        .footer-credentials {
+            font-size: 13px;
+            color: #ecf0f1;
+            display: inline;
+        }
+
+        .footer-address {
+            font-size: 13px;
+            color: #ecf0f1;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            color: #95a5a6;
+        }
+
+        /* Geo-blocking message */
+        .geo-blocked {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            color: #856404;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Gregory M Sloan, <span style="font-size: 14px; font-weight: 500; color: #5a6c7d;">CLU, ChFC</span></div>
+                <div class="phone-header">
+                    <a href="tel:+18003658376"><span style="font-size: 12px; color: #7f8c8d;">Call Greg:</span> <span style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.TERM</span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="geo-block" class="geo-blocked" style="display: none; text-align: center; padding: 60px 20px; font-size: 18px; color: #666;">
+        <strong>Service Not Available</strong><br>
+        This service is currently only available to residents of the United States.
+    </div>
+
+    <section class="quiz-section">
+        <div class="container">
+            <h1 style="text-align: center; margin-bottom: 40px; color: #1a1a1a; font-size: 32px;">Understanding Your Life Insurance Approval Odds</h1>
+            <div class="quiz-header">
+                <h2>Health Profile Assessment</h2>
+                <p>Select all factors that apply to your history. Honest answers help us guide you through the underwriting process accurately.</p>
+            </div>
+
+            <div class="conditions-grid">
+                <div class="condition-card" data-condition="heart">
+                    <span class="condition-icon">❤️</span>
+                    <div class="condition-name">Heart / BP</div>
+                </div>
+                <div class="condition-card" data-condition="diabetes">
+                    <span class="condition-icon">🩸</span>
+                    <div class="condition-name">Diabetes / Thyroid</div>
+                </div>
+                <div class="condition-card" data-condition="anxiety">
+                    <span class="condition-icon">🧠</span>
+                    <div class="condition-name">Anxiety / Mood</div>
+                </div>
+                <div class="condition-card" data-condition="sleep">
+                    <span class="condition-icon">😴</span>
+                    <div class="condition-name">Sleep / Asthma</div>
+                </div>
+                <div class="condition-card" data-condition="stroke">
+                    <span class="condition-icon">⚡</span>
+                    <div class="condition-name">Stroke History</div>
+                </div>
+                <div class="condition-card" data-condition="driving">
+                    <span class="condition-icon">🚗</span>
+                    <div class="condition-name">Driving / Criminal</div>
+                </div>
+                <div class="condition-card" data-condition="credit">
+                    <span class="condition-icon">💳</span>
+                    <div class="condition-name">Poor Credit</div>
+                </div>
+                <div class="condition-card" data-condition="obesity">
+                    <span class="condition-icon">⚖️</span>
+                    <div class="condition-name">Obesity / Overweight</div>
+                </div>
+                <div class="condition-card" data-condition="cancer">
+                    <span class="condition-icon">🎗️</span>
+                    <div class="condition-name">Cancer History</div>
+                </div>
+                <div class="condition-card" data-condition="disability">
+                    <span class="condition-icon">♿</span>
+                    <div class="condition-name">Disability</div>
+                </div>
+                <div class="condition-card" data-condition="smoking">
+                    <span class="condition-icon">🚬</span>
+                    <div class="condition-name">Smoker / Tobacco</div>
+                </div>
+                <div class="condition-card" data-condition="perfect">
+                    <span class="condition-icon">✅</span>
+                    <div class="condition-name">Perfect Health</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="cta-button" onclick="handleCTA()">
+                    See Your Approval Odds
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-info">
+                <div class="profile-name">Gregory M Sloan, <span class="profile-credentials">CLU, ChFC</span></div>
+                <p class="profile-blurb">I specialize in helping clients navigate the life insurance underwriting process. With access to modern carriers using accelerated underwriting, I can help you find high-limit policies that prioritize speed and privacy. Let me guide you through understanding your approval odds and finding the right coverage for your family.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Understanding Your Life Insurance Approval Odds</h1>
+            <p class="subtitle">Insurance carriers don't judge on intentions—they judge on data. Let's understand where you stand.</p>
+            <p>Applying for life insurance means undergoing an underwriting process. If a carrier orders a medical exam, those findings are reported and shared across the industry, impacting every future application you make. But there are ways to get large amounts of coverage without exams.</p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Unlock the insider strategies most people never know about when looking for coverage.</h2>
+            <button class="cta-button" onclick="handleCTA()">
+                See Your Approval Odds
+            </button>
+            <div style="font-size: 16px; margin: 20px 0;">
+                <strong>Or call directly:</strong>
+                <a href="tel:+18003658376" class="cta-phone" style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.TERM</a>
+            </div>
+            <p class="confidence-text">100% Confidential & Secure Consultation</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-name">Gregory M Sloan, <span class="footer-credentials">CLU, ChFC</span></div>
+            <div class="footer-address">3210 N University Drive, Unit 223<br>Coral Springs, FL 33065<br><a href="tel:+18003658376" style="color: #ecf0f1; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px;">800.365.TERM</a></div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="sms-opt-in.html">SMS Opt-In</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Gregory M Sloan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">⚠️</div>
+                <h2 class="modal-title">Audit Result: Strategic Review Required</h2>
+            </div>
+            <p class="modal-message">
+                Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.
+            </p>
+            <div class="modal-buttons">
+                <a href="tel:+18003651836" class="modal-button modal-button-call">
+                    📞 Call Greg Now
+                </a>
+                <a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">
+                    📅 Book 15-Min Strategy Call
+                </a>
+            </div>
+            <p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>
+        </div>
+    </div>
+
+    <script>
+        // Geo-blocking check
+        async function checkGeoLocation() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                const country = data.country_code;
+                
+                if (country !== 'US') {
+                    document.getElementById('geo-block').style.display = 'block';
+                    document.querySelector('.hero').style.display = 'none';
+                    document.querySelector('.profile-section').style.display = 'none';
+                    document.querySelector('.cta-section').style.display = 'none';
+                }
+            } catch (error) {
+                console.log('Geo-blocking check failed, allowing access');
+            }
+        }
+
+        checkGeoLocation();
+
+        // Handle condition card selectionon
+        document.querySelectorAll('.condition-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('selected');
+            });
+        });
+
+        // Handle CTA button - Show results modal
+        function handleCTA() {
+            const selectedCards = document.querySelectorAll('.condition-card.selected');
+            const selectedConditions = Array.from(selectedCards).map(card => card.dataset.condition);
+            
+            // Check if only perfect health is selected
+            if (selectedConditions.length === 1 && selectedConditions[0] === 'perfect') {
+                showPerfectHealthModal();
+            } else {
+                showAuditResultModal();
+            }
+        }
+
+        // Show perfect health modal
+        function showPerfectHealthModal() {
+            const modal = document.getElementById('resultsModal');
+            const content = modal.querySelector('.modal-content');
+            
+            content.className = 'modal-content perfect-health';
+            content.innerHTML = '<div class="modal-header"><div class="modal-icon">✅</div><h2 class="modal-title">Instant Approval Candidate</h2></div><p class="modal-message">You are a prime candidate for Instant Approval based on these preliminary factors. However, even one wrong answer on the official application can trigger a manual review cycle. We recommend a quick verification before submission.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 Call Greg Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
+            
+            modal.style.display = 'block';
+        }
+
+        // Show audit result modal
+        function showAuditResultModal() {
+            const modal = document.getElementById('resultsModal');
+            const content = modal.querySelector('.modal-content');
+            
+            content.className = 'modal-content audit-result';
+            content.innerHTML = '<div class="modal-header"><div class="modal-icon">⚠️</div><h2 class="modal-title">Audit Result: Strategic Review Required</h2></div><p class="modal-message">Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 Call Greg Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
+            
+            modal.style.display = 'block';
+        }
+
+        // Show results modal (deprecated)
+        function showResultsModal() {
+            document.getElementById('resultsModal').style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('resultsModal').style.display = 'none';
+        }
+
+        // Call Greg - now using native tel: link
+        function callGreg() {
+            window.location.href = 'tel:+18003658376';
+        }
+
+        // Book appointment - now using native link
+        function bookAppointment() {
+            // Handled by native <a> tag with target="_blank"
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('resultsModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
