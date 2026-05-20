@@ -31,8 +31,6 @@
             background: white;
             border-bottom: 1px solid #e9ecef;
             padding: 20px 0;
-            position: sticky;
-            top: 0;
             z-index: 100;
         }
 
@@ -521,6 +519,98 @@
             color: #95a5a6;
         }
 
+        /* Hawaii Campaign Banner */
+        .hawaii-banner {
+            background: linear-gradient(135deg, #0077b6 0%, #00a8e8 100%);
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .hawaii-banner-number {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .hawaii-banner-number a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hawaii-banner-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            margin-bottom: 4px;
+        }
+
+        .hawaii-tap-btn {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            font-size: 20px;
+            font-weight: 800;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.5);
+            animation: pulse-btn 2s infinite;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .hawaii-tap-btn:hover {
+            background: #e85d2c;
+            transform: scale(1.03);
+            box-shadow: 0 6px 24px rgba(255, 107, 53, 0.6);
+        }
+
+        @keyframes pulse-btn {
+            0%, 100% { box-shadow: 0 4px 20px rgba(255, 107, 53, 0.5); }
+            50% { box-shadow: 0 4px 30px rgba(255, 107, 53, 0.8), 0 0 0 8px rgba(255, 107, 53, 0.15); }
+        }
+
+        @media (max-width: 768px) {
+            .hawaii-banner {
+                padding: 14px 16px;
+            }
+
+            .hawaii-banner-number {
+                font-size: 26px;
+                letter-spacing: 2px;
+            }
+
+            .hawaii-tap-btn {
+                display: block;
+                font-size: 22px;
+                padding: 18px 24px;
+                width: 100%;
+                max-width: 400px;
+                margin: 8px auto 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hawaii-banner-number {
+                font-size: 24px;
+            }
+
+            .hawaii-tap-btn {
+                font-size: 20px;
+                padding: 16px 20px;
+            }
+        }
+
         /* Geo-blocking message */
         .geo-blocked {
             background: #fff3cd;
@@ -534,12 +624,18 @@
     </style>
 </head>
 <body>
+    <div class="hawaii-banner">
+        <div class="hawaii-banner-label">Hawaii Local Office</div>
+        <div class="hawaii-banner-number"><a href="tel:+18082078376">(808) 207-TERM</a></div>
+        <a href="tel:+18082078376" class="hawaii-tap-btn">📞 Tap to Call / Text Local Office</a>
+    </div>
+
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">Gregory M Sloan, <span style="font-size: 14px; font-weight: 500; color: #5a6c7d;">CLU, ChFC</span></div>
                 <div class="phone-header">
-                    <a href="tel:+18003658376"><span style="font-size: 12px; color: #7f8c8d;">Call Greg:</span> <span style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.TERM</span></a>
+                    <a href="tel:+18082078376"><span style="font-size: 12px; color: #7f8c8d;">Call Local:</span> <span style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">(808) 207-TERM</span></a>
                 </div>
             </div>
         </div>
@@ -642,7 +738,7 @@
             </button>
             <div style="font-size: 16px; margin: 20px 0;">
                 <strong>Or call directly:</strong>
-                <a href="tel:+18003658376" class="cta-phone" style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.TERM</a>
+                <a href="tel:+18082078376" class="cta-phone" style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">(808) 207-TERM</a>
             </div>
             <p class="confidence-text">100% Confidential & Secure Consultation</p>
         </div>
@@ -651,7 +747,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-name">Gregory M Sloan, <span class="footer-credentials">CLU, ChFC</span></div>
-            <div class="footer-address">3210 N University Drive, Unit 223<br>Coral Springs, FL 33065<br><a href="tel:+18003658376" style="color: #ecf0f1; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px;">800.365.TERM</a></div>
+            <div class="footer-address">3210 N University Drive, Unit 223<br>Coral Springs, FL 33065<br><a href="tel:+18082078376" style="color: #ecf0f1; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px;">(808) 207-TERM</a></div>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Use</a>
@@ -672,8 +768,8 @@
                 Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.
             </p>
             <div class="modal-buttons">
-                <a href="tel:+18003651836" class="modal-button modal-button-call">
-                    📞 Call Greg Now
+                <a href="tel:+18082078376" class="modal-button modal-button-call">
+                    📞 Call Local Office Now
                 </a>
                 <a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">
                     📅 Book 15-Min Strategy Call
@@ -730,7 +826,7 @@
             const content = modal.querySelector('.modal-content');
             
             content.className = 'modal-content perfect-health';
-            content.innerHTML = '<div class="modal-header"><div class="modal-icon">✅</div><h2 class="modal-title">Instant Approval Candidate</h2></div><p class="modal-message">You are a prime candidate for Instant Approval based on these preliminary factors. However, even one wrong answer on the official application can trigger a manual review cycle. We recommend a quick verification before submission.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 Call Greg Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
+            content.innerHTML = '<div class="modal-header"><div class="modal-icon">✅</div><h2 class="modal-title">Instant Approval Candidate</h2></div><p class="modal-message">You are a prime candidate for Instant Approval based on these preliminary factors. However, even one wrong answer on the official application can trigger a manual review cycle. We recommend a quick verification before submission.</p><div class="modal-buttons"><a href="tel:+18082078376" class="modal-button modal-button-call">📞 Call Local Office Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
             
             modal.style.display = 'block';
         }
@@ -741,7 +837,7 @@
             const content = modal.querySelector('.modal-content');
             
             content.className = 'modal-content audit-result';
-            content.innerHTML = '<div class="modal-header"><div class="modal-icon">⚠️</div><h2 class="modal-title">Audit Result: Strategic Review Required</h2></div><p class="modal-message">Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 Call Greg Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
+            content.innerHTML = '<div class="modal-header"><div class="modal-icon">⚠️</div><h2 class="modal-title">Audit Result: Strategic Review Required</h2></div><p class="modal-message">Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.</p><div class="modal-buttons"><a href="tel:+18082078376" class="modal-button modal-button-call">📞 Call Local Office Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
             
             modal.style.display = 'block';
         }
@@ -758,7 +854,7 @@
 
         // Call Greg - now using native tel: link
         function callGreg() {
-            window.location.href = 'tel:+18003658376';
+            window.location.href = 'tel:+18082078376';
         }
 
         // Book appointment - now using native link
