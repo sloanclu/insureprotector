@@ -42,6 +42,6 @@ export default async (req: Request, context: Context) => {
 
 export const config: Config = {
   path: "/*",
-  excludedPath: ["/favicon.*", "/*.png", "/*.jpg", "/*.css", "/*.js", "/*.ico", "/*.xml", "/*.json"],
+  excludedPath: ["/favicon.*", "/*.png", "/*.jpg", "/*.css", "/*.js", "/*.ico", "/*.xml", "/*.json", "/*.pdf"],
   onError: "bypass",
 };

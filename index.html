@@ -690,7 +690,7 @@
                 Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.
             </p>
             <div class="modal-buttons">
-                <a href="tel:+18003651836" class="modal-button modal-button-call">
+                <a href="tel:+18003658376" class="modal-button modal-button-call">
                     📞 Call Greg Now
                 </a>
                 <a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">
@@ -711,6 +711,7 @@
                 
                 if (country !== 'US') {
                     document.getElementById('geo-block').style.display = 'block';
+                    document.querySelector('.quiz-section').style.display = 'none';
                     document.querySelector('.hero').style.display = 'none';
                     document.querySelector('.profile-section').style.display = 'none';
                     document.querySelector('.cta-section').style.display = 'none';
@@ -725,6 +726,15 @@
         // Handle condition card selectionon
         document.querySelectorAll('.condition-card').forEach(card => {
             card.addEventListener('click', function() {
+                const condition = this.dataset.condition;
+                if (condition === 'perfect') {
+                    document.querySelectorAll('.condition-card').forEach(c => {
+                        if (c.dataset.condition !== 'perfect') c.classList.remove('selected');
+                    });
+                } else {
+                    const perfectCard = document.querySelector('.condition-card[data-condition="perfect"]');
+                    if (perfectCard) perfectCard.classList.remove('selected');
+                }
                 this.classList.toggle('selected');
             });
         });
