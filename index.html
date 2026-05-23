@@ -6,6 +6,21 @@
     <title>Life Insurance Risk Assessment | Gregory M Sloan</title>
     <meta name="description" content="Understand your life insurance approval odds with our quick risk assessment quiz.">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '224071631616393932');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=224071631616393932&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         * {
             margin: 0;
@@ -540,6 +555,8 @@
                 <div class="logo">Gregory M Sloan, <span style="font-size: 14px; font-weight: 500; color: #5a6c7d;">CLU, ChFC</span></div>
                 <div class="phone-header">
                     <a href="tel:+18003658376"><span style="font-size: 12px; color: #7f8c8d;">Call Greg:</span> <span style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.TERM</span></a>
+                    <span style="color: #ccc; margin: 0 6px;">|</span>
+                    <a href="tel:+18003651836"><span style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.1836</span></a>
                 </div>
             </div>
         </div>
@@ -643,15 +660,21 @@
             <div style="font-size: 16px; margin: 20px 0;">
                 <strong>Or call directly:</strong>
                 <a href="tel:+18003658376" class="cta-phone" style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.TERM</a>
+                <span style="color: #999;">|</span>
+                <a href="tel:+18003651836" class="cta-phone" style="font-size: 18px; font-weight: 700; color: #e74c3c; letter-spacing: 1px;">800.365.1836</a>
             </div>
             <p class="confidence-text">100% Confidential & Secure Consultation</p>
         </div>
     </section>
 
+    <!-- Soro Blog Embed -->
+    <div id="soro-blog"></div>
+    <script src="https://app.trysoro.com/api/embed/734bf807-2919-4a3d-bf49-474489e1e76c" defer></script>
+
     <footer>
         <div class="footer-content">
             <div class="footer-name">Gregory M Sloan, <span class="footer-credentials">CLU, ChFC</span></div>
-            <div class="footer-address">3210 N University Drive, Unit 223<br>Coral Springs, FL 33065<br><a href="tel:+18003658376" style="color: #ecf0f1; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px;">800.365.TERM</a></div>
+            <div class="footer-address">3210 N University Drive, Unit 223<br>Coral Springs, FL 33065<br><a href="tel:+18003658376" style="color: #ecf0f1; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px;">800.365.TERM</a> <span style="color: #95a5a6;">|</span> <a href="tel:+18003651836" style="color: #ecf0f1; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 1px;">800.365.1836</a></div>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Use</a>
@@ -672,8 +695,11 @@
                 Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.
             </p>
             <div class="modal-buttons">
+                <a href="tel:+18003658376" class="modal-button modal-button-call">
+                    📞 800.365.TERM
+                </a>
                 <a href="tel:+18003651836" class="modal-button modal-button-call">
-                    📞 Call Greg Now
+                    📞 800.365.1836
                 </a>
                 <a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">
                     📅 Book 15-Min Strategy Call
@@ -704,7 +730,7 @@
 
         checkGeoLocation();
 
-        // Handle condition card selectionon
+        // Handle condition card selection
         document.querySelectorAll('.condition-card').forEach(card => {
             card.addEventListener('click', function() {
                 this.classList.toggle('selected');
@@ -730,7 +756,7 @@
             const content = modal.querySelector('.modal-content');
             
             content.className = 'modal-content perfect-health';
-            content.innerHTML = '<div class="modal-header"><div class="modal-icon">✅</div><h2 class="modal-title">Instant Approval Candidate</h2></div><p class="modal-message">You are a prime candidate for Instant Approval based on these preliminary factors. However, even one wrong answer on the official application can trigger a manual review cycle. We recommend a quick verification before submission.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 Call Greg Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
+            content.innerHTML = '<div class="modal-header"><div class="modal-icon">✅</div><h2 class="modal-title">Instant Approval Candidate</h2></div><p class="modal-message">You are a prime candidate for Instant Approval based on these preliminary factors. However, even one wrong answer on the official application can trigger a manual review cycle. We recommend a quick verification before submission.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 800.365.TERM</a><a href="tel:+18003651836" class="modal-button modal-button-call">📞 800.365.1836</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
             
             modal.style.display = 'block';
         }
@@ -741,7 +767,7 @@
             const content = modal.querySelector('.modal-content');
             
             content.className = 'modal-content audit-result';
-            content.innerHTML = '<div class="modal-header"><div class="modal-icon">⚠️</div><h2 class="modal-title">Audit Result: Strategic Review Required</h2></div><p class="modal-message">Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 Call Greg Now</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
+            content.innerHTML = '<div class="modal-header"><div class="modal-icon">⚠️</div><h2 class="modal-title">Audit Result: Strategic Review Required</h2></div><p class="modal-message">Do NOT apply online yet. You have indicated risk factors that automated systems frequently misinterpret. We need to manually route your application to specific carriers that specialize in your profile to avoid an unnecessary decline.</p><div class="modal-buttons"><a href="tel:+18003658376" class="modal-button modal-button-call">📞 800.365.TERM</a><a href="tel:+18003651836" class="modal-button modal-button-call">📞 800.365.1836</a><a href="https://calendar.app.google/YBuCM1iHLjfH2Xpc7" target="_blank" class="modal-button modal-button-book">📅 Book 15-Min Strategy Call</a></div><p class="modal-footer">Direct calendar access to Gregory Sloan, Senior Risk Strategist</p>';
             
             modal.style.display = 'block';
         }
